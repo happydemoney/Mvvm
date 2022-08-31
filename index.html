@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SPA-MVVM</title>
+</head>
+<body>
+  <div id="app">
+    <h1>{{ stage }} 平台课程：{{ course.title }}</h1>
+    <p>{{ course.title }}是{{ course.author }}发布的课程</p>
+    <p>发布时间为 {{ course.publishTime }}</p>
+    <div>与输入框联动的值为:</div>
+    <span>{{ inputValue }}</span><br/>
+    <hr>
+    <input type="text" v-model="inputValue" />
+  </div>
+
+  <script type="module">
+    import Mvvm from './src/index.js';
+    const mvvm = new Mvvm({
+      el: '#app',
+      data: function  () {
+        return {
+          stage: 'GitChart',
+          course: {
+            title: '前端开发进阶',
+            author: 'Money',
+            publishTime: '2022年7月',
+          },
+          inputValue: '请输入'
+        }
+      }
+    })
+    window.mvvm = mvvm;
+  </script>
+</body>
+</html>
